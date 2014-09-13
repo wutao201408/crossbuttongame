@@ -34,5 +34,5 @@ public interface CommonConst {
     public static final String GAME_OVER = "游戏结束";
     public static final String SVAE_SCORE = "恭喜你获得了第%d名，请输入姓名。";
     public static final String ABOUT = "穿纽扣游戏单机PC版1.0 \n\nby 吴滔（wutao201408@163.com）";
-    public static final int LEVEL_MAPPING_SCORE[] = { 1,500,1000,2000,7000};
+    public static final int LEVEL_MAPPING_SCORE[] = { 2000,5000,8000,15000,30000};
 }
