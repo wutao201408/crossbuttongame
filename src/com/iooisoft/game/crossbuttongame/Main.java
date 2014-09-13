@@ -11,8 +11,6 @@ public class Main {
 		// 生成一个具有固定行数和固定列数的游戏棋盘类实例
 		final CrossButtonGame game = new CrossButtonGame(CommonConst.ROWS,
 				CommonConst.COLS,CommonConst.MAX_BUTTON_NUM,CommonConst.MAX_INTERVAL);
-		
-		// 显示游戏主界面
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				GameFrame gameFrame = new GameFrame(game);		
