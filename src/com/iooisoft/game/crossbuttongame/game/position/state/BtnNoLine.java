@@ -26,24 +26,15 @@ public class BtnNoLine extends PositionState {
 	public void linedFromBelow() {
 		//this.position.setState(new FocusButtonWithBelowLine(this.position));
 	}
-	public boolean canLinkBy( Position source) {
-	    Coordinate srcCoord = source.getCoordinate();
-	    Coordinate.RelativePosition srcRelative = 
-            this.position.getCoordinate().getRelativePosition(srcCoord);
-        if( (srcRelative != Coordinate.RelativePosition.NOT_VALID)) {
-            return true;
-        } 
-        return false;
-	}
-	
     public boolean clear() {
     	return false;
     }
-    public void linkBy( Position source) {
+    public boolean linkBy( Position source) {
         Coordinate srcCoord = source.getCoordinate();
         Coordinate.RelativePosition srcRelative = 
             this.position.getCoordinate().getRelativePosition(srcCoord);
         PositionState state = null;
+        boolean canLink = true;
         switch(srcRelative) {
         	case LEFT:
         		state = new FSBtnWithLine(this.position);
@@ -70,27 +61,27 @@ public class BtnNoLine extends PositionState {
         		//linedFromBelow();
         		break;
         	default:
+        		canLink = false;
         		break;
         }
+        
+        return canLink;
+        
     }
     
     public boolean isLinkedButton() {
         return false;
     }
-	public boolean canCrossByVerLine() {
-	    return true;
-	}
-	public boolean canCrossByHorLine() {
-	    return true;
-	}
-	public void verlineCross() {
+    public boolean canCrossBy(StateValue lineType) {
+        return true;
+    }
+	public void crossBy(StateValue lineType) {
 		PositionState state = new BtnWithLine(this.position);
-		state.setStateValue(StateValue.CL_BTN_VER_LINE);
-		this.position.setState(state);
-	}
-	public void horlineCross() {
-		PositionState state = new BtnWithLine(this.position);
-		state.setStateValue(StateValue.CL_BTN_HOR_LINE);
+		if(lineType == StateValue.VER_LINE) {
+			state.setStateValue(StateValue.CL_BTN_VER_LINE);
+		} else {
+			state.setStateValue(StateValue.CL_BTN_HOR_LINE);
+		}
 		this.position.setState(state);
 	}
 }

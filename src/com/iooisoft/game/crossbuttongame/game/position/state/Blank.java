@@ -12,22 +12,12 @@ public class Blank extends PositionState{
 	public void addButton() {
 		this.position.setState(new BtnNoLine(this.position));
 	}
-	
-	public void verlineCross() {
+	public void crossBy(StateValue lineType) {
 		Line state = new Line(this.position);
-		state.setStateValue(StateValue.VER_LINE);
+		state.setStateValue(lineType);
 		this.position.setState(state);
 	}
-
-	public void horlineCross() {
-		Line state = new Line(this.position);
-		state.setStateValue(StateValue.HOR_LINE);
-		this.position.setState(state);
-	}
-    public boolean canCrossByVerLine() {
-        return true;
-    }
-    public boolean canCrossByHorLine() {
+    public boolean canCrossBy(PositionState.StateValue lineType) {
         return true;
     }
     public boolean clear() {

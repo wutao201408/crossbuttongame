@@ -21,26 +21,13 @@ public class Line extends Clearable {
 	    return true;
 	}
 
-	public void horlineCross() {
-		if(this.stateValue == StateValue.VER_LINE) {
+	public void crossBy(StateValue lineType) {
+		if(this.stateValue != lineType && this.stateValue != StateValue.CROSS_LINE) {
 			this.stateValue = StateValue.CROSS_LINE;
 		}
 	}
-	
-	public void verlineCross() {
-		if(this.stateValue == StateValue.HOR_LINE) {
-			this.stateValue = StateValue.CROSS_LINE;
-		}
-	}
-	public boolean canCrossByVerLine() {
-		if(this.stateValue == StateValue.HOR_LINE) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean canCrossByHorLine() {
-		if(this.stateValue == StateValue.VER_LINE) {
+	public boolean canCrossBy(StateValue lineType) {
+		if(this.stateValue != lineType && this.stateValue != StateValue.CROSS_LINE) {
 			return true;
 		}
 		return false;

@@ -37,22 +37,14 @@ public class PositionState {
 	public boolean selectButton() {
 		return false;
 	}
-	public void verlineCross() {
+	public void crossBy(StateValue lineType) {
 		// Do nothing.
 	}
-	public void horlineCross() {
-		// Do nothing.
-	}
-	public boolean canLinkBy( Position src) {
+	public boolean canCrossBy(StateValue lineType) {
 	    return false;
 	}
-	public boolean canCrossByVerLine() {
-	    return false;
-	}
-	public boolean canCrossByHorLine() {
-	    return false;
-	}
-	public void linkBy(Position src) {
+	public boolean linkBy(Position src) {
+		return false;
 	}
 	public void linkTo(Position dst) {
 	}

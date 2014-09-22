@@ -11,7 +11,7 @@ public class BtnWithLine extends Clearable {
 	
 	// 参数为出发点的源纽扣Position对象，根据当前目的纽扣连接着的线的方向，以及
 	// 源纽扣相对于当前纽扣的位置判断源纽扣到目的纽扣是否可以连接
-    public boolean canLinkBy( Position src) {
+    public boolean linkBy( Position src) {
     	
     	// 判断源纽扣相对于目的纽扣的方位
         Coordinate srcCoord = src.getCoordinate();

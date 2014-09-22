@@ -21,26 +21,17 @@ public class Position {
 	public boolean selected() {
         return this.state.selectButton();
     }
-	public void verticalCross() {
-		this.state.verlineCross();
+	public void crossBy(PositionState.StateValue lineType) {
+		this.state.crossBy(lineType);
 	}
-	public void horizontalCross() {
-		this.state.horlineCross();
-	}
-	public boolean canLinkBy(Position src) {
-	    return this.state.canLinkBy(src);
-	}
-	public void linkBy(Position src) {
-		this.state.linkBy(src);
+	public boolean linkBy(Position src) {
+		return this.state.linkBy(src);
 	}
 	public void linkTo(Position dst) {
 		this.state.linkTo(dst);
 	}
-	public boolean canCrossByVerLine() {
-	    return this.state.canCrossByVerLine();
-	}
-	public boolean canCrossByHorLine() {
-	    return this.state.canCrossByHorLine();
+	public boolean canCrossBy(PositionState.StateValue lineType) {
+	    return this.state.canCrossBy(lineType);
 	}
 	public boolean clear() {
 		return this.state.clear();

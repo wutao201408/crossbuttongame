@@ -48,7 +48,7 @@ public class GameBoard {
 	private void linkFromLeftToRight( int row,int colFrom,int colTo ) {
 		for( int col = colFrom+1;col<colTo;col++ ) {
 	        Position temp = board[row][col];
-	        temp.verticalCross();
+	        temp.crossBy(PositionState.StateValue.VER_LINE);
 	        if(emptyPosList.contains(temp)) {
 	            this.emptyPosList.remove(temp);
 	        }
@@ -58,7 +58,7 @@ public class GameBoard {
 	private void linkFromBlewToTop( int col,int rowFrom,int rowTo ) {
 		for( int row = rowFrom+1;row<rowTo;row++ ) {
 	        Position temp = board[row][col];
-	        temp.horizontalCross();
+	        temp.crossBy(PositionState.StateValue.HOR_LINE);
 	        if(emptyPosList.contains(temp)) {
 	            this.emptyPosList.remove(temp);
 	        }
@@ -67,7 +67,6 @@ public class GameBoard {
 	
 	private void linkTwoPosition( Position src, Position dst ) {
 
-		// 变更
 		src.linkTo(dst);
 		
 	    int srcRow = src.getCoordinate().getRow();
@@ -88,18 +87,12 @@ public class GameBoard {
 	    		linkFromBlewToTop(srcCol,dstRow,srcRow);
 	    	}
 	    }
-	    
-	    dst.linkBy(src);
-	    
-	}
-	private boolean canLink( Position src, Position dst) {
-		return dst.canLinkBy(src);
 	}
 	
 	private boolean judgeFromLeftToRight( int row,int colFrom,int colTo ) {
 		for( int col = colFrom+1;col<colTo;col++ ) {
 	        Position temp = board[row][col];
-	        if(!temp.canCrossByVerLine()) {
+	        if(!temp.canCrossBy(PositionState.StateValue.VER_LINE)) {
 	        	return false;
 	        }
 		}
@@ -109,7 +102,7 @@ public class GameBoard {
 	private boolean judgeFromBlewToTop( int col,int rowFrom,int rowTo ) {
 		for( int row = rowFrom+1;row<rowTo;row++ ) {
 	        Position temp = board[row][col];
-	        if(!temp.canCrossByHorLine()) {
+	        if(!temp.canCrossBy(PositionState.StateValue.HOR_LINE)) {
 	        	return false;
 	        }
 		}
@@ -186,14 +179,14 @@ public class GameBoard {
 		    }
 		}
 		
-		// 已经在穿纽扣的过程中,判断目标的格子是否是一个可以连接
-		// 的纽扣
-		if( !this.canLink(lastPosition, dst) ) {
+		// 继续判断源纽扣和目标纽扣的两个端点间的通路是否可以连通
+		if( !this.canRouteCross(lastPosition, dst) ) {
 			return new SelectResult();
 		}
 		
-		// 继续判断源纽扣和目标纽扣的两个端点间的通路是否可以连通
-		if( !this.canRouteCross(lastPosition, dst) ) {
+		// 已经在穿纽扣的过程中,判断目标的格子是否是一个可以连接
+		// 的纽扣
+		if( !dst.linkBy(lastPosition) ) {
 			return new SelectResult();
 		}
 		
