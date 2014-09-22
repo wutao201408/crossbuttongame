@@ -14,18 +14,6 @@ public class BtnNoLine extends PositionState {
 		this.position.setState(new FSBtnNoLine(this.position));
 		return true;
 	}
-	public void linedFromLeft() {
-		//this.position.setState(new FocusButtonWithLeftLine(this.position));
-	}
-	public void linedFromRight() {
-		//this.position.setState(new FocusButtonWithRightLine(this.position));
-	}
-	public void linedFromTop() {
-		//this.position.setState(new FocusButtonWithTopLine(this.position));
-	}
-	public void linedFromBelow() {
-		//this.position.setState(new FocusButtonWithBelowLine(this.position));
-	}
     public boolean clear() {
     	return false;
     }

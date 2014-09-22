@@ -2,7 +2,7 @@ package com.iooisoft.game.crossbuttongame.game.position.state;
 
 import com.iooisoft.game.crossbuttongame.game.position.Position;
 
-public class Line extends Clearable {
+public class Line extends PositionState {
 
 	public Line(Position position) {
 		super(position);
@@ -31,5 +31,11 @@ public class Line extends Clearable {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean clear() {
+		this.position.setState(new Blank(this.position));
+		this.stateValue = StateValue.BLANK;
+		return true;
 	}
 }

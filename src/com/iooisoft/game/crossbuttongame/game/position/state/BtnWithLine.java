@@ -3,7 +3,7 @@ package com.iooisoft.game.crossbuttongame.game.position.state;
 import com.iooisoft.game.crossbuttongame.game.position.Coordinate;
 import com.iooisoft.game.crossbuttongame.game.position.Position;
 
-public class BtnWithLine extends Clearable {
+public class BtnWithLine extends PositionState {
 
 	public BtnWithLine(Position position) {
 		super(position);
@@ -59,5 +59,11 @@ public class BtnWithLine extends Clearable {
 	
 	public boolean isLinkedButton() {
 	    return true;
+	}
+	
+	public boolean clear() {
+		this.position.setState(new Blank(this.position));
+		this.stateValue = StateValue.BLANK;
+		return true;
 	}
 }

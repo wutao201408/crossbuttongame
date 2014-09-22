@@ -3,7 +3,7 @@ package com.iooisoft.game.crossbuttongame.game.position.state;
 import com.iooisoft.game.crossbuttongame.game.position.Coordinate;
 import com.iooisoft.game.crossbuttongame.game.position.Position;
 
-public class FSBtnWithLine extends Clearable{
+public class FSBtnWithLine extends PositionState {
 
 	public FSBtnWithLine(Position position) {
 		super(position);
@@ -72,5 +72,11 @@ public class FSBtnWithLine extends Clearable{
     
 	public void undo() {
 		this.position.setState(new BtnNoLine(this.position));
+	}
+	
+	public boolean clear() {
+		this.position.setState(new Blank(this.position));
+		this.stateValue = StateValue.BLANK;
+		return true;
 	}
 }
